@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VideoPlayerActivity">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#747878">
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabKaraoke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Karaoke" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabLyrics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lyrics" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabAudio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Audio" />
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="wrap_content"
+        android:layout_height="230dp"
+        android:layout_below="@+id/tabLayout"
+        android:background="#000000"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewPager">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLyricsView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#3F4040">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabMaori"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Māori" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="English" />
+
+        </android.support.design.widget.TabLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pagerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tabLyricsView"/>
+    </FrameLayout>
+
+
+</RelativeLayout>
