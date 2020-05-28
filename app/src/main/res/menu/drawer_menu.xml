@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_mainpage"
+            android:icon="@drawable/ic_mainpage"
+            android:title="Main page" />
+
+        <item
+            android:id="@+id/nav_wintecmarae"
+            android:icon="@drawable/ic_wintecmarae"
+            android:title="Wintec Marae" />
+
+        <item
+            android:id="@+id/nav_carvings"
+            android:icon="@drawable/ic_carvings"
+            android:title="Carvings" />
+
+        <item
+            android:id="@+id/nav_relationshipwithtainui"
+            android:icon="@drawable/ic_relationshipwithtainui"
+            android:title="Relationship With Tainui" />
+    </group>
+
+    <item android:title=""/>
+    <item android:title=""/>
+    <item android:title=""/>
+    <item android:title="">
+        <menu>
+            <item android:id="@+id/nav_aboutapp"
+                android:title="About app"
+                />
+
+        </menu>
+    </item>
+
+</menu>
