@@ -20,4 +20,8 @@ public class Multimedia {
     public String getFilename() {
         return filename;
     }
+
+    public int getId() {
+        return id;
+    }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".VideoPlayerActivity">
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,26 +17,26 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="#747878">
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:id="@+id/tabKaraoke"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Karaoke" />
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:id="@+id/tabLyrics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lyrics" />
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:id="@+id/tabAudio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Audio" />
-    </android.support.design.widget.TabLayout>
+    </com.google.android.material.tabs.TabLayout>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="wrap_content"
         android:layout_height="230dp"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/viewPager">
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLyricsView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,20 +56,20 @@
             android:layout_alignParentTop="true"
             android:background="#3F4040">
 
-            <android.support.design.widget.TabItem
+            <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabMaori"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Māori" />
 
-            <android.support.design.widget.TabItem
+            <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabEnglish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="English" />
 
-        </android.support.design.widget.TabLayout>
-        <android.support.v4.view.ViewPager
+        </com.google.android.material.tabs.TabLayout>
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/pagerView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -36,4 +36,8 @@ public class CarvingDescription {
     public int getMultimediaId() {
         return multimediaId;
     }
+
+    public int getId() {
+        return id;
+    }
 }

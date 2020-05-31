@@ -4,12 +4,13 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
 public class CarvingListViewModel extends AndroidViewModel {
     private AppRepository appRepository;
-    private List<CarvingListView> carvingList;
+    private LiveData<List<CarvingListView>> carvingList;
 
     public CarvingListViewModel(@NonNull Application application) {
         super(application);
@@ -53,7 +54,7 @@ public class CarvingListViewModel extends AndroidViewModel {
         appRepository.delete(multimedia);
     }
 
-    public List<CarvingListView> getCarvingListView() {
+    public LiveData<List<CarvingListView>> getCarvingListView() {
         return carvingList;
     }
 

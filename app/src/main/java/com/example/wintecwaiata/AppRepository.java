@@ -3,6 +3,7 @@ package com.example.wintecwaiata;
 import android.app.Application;
 import android.os.AsyncTask;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Update;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class AppRepository {
     private CarvingDescriptionViewDao carvingDescriptionViewDao;
 
     // Data
-    private List<CarvingListView> carvingListViews;
+    private LiveData<List<CarvingListView>> carvingListViews;
     //private List<CarvingDescriptionView> carvingDescriptionViews;
 
     public AppRepository(Application application) {
@@ -38,7 +39,7 @@ public class AppRepository {
     }
 
     // Getters
-    public List<CarvingListView> getCarvingListViews() {
+    public LiveData<List<CarvingListView>> getCarvingListViews() {
         return carvingListViews;
     }
 

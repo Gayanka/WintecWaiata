@@ -19,7 +19,6 @@ public class Carving {
         this.priority = priority;
     }
 
-
     public void setId(int id) {
         this.id = id;
     }
@@ -36,4 +35,7 @@ public class Carving {
         return priority;
     }
 
+    public int getId() {
+        return id;
+    }
 }

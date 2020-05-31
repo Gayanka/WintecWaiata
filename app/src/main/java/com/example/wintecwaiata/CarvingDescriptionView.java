@@ -3,13 +3,13 @@ package com.example.wintecwaiata;
 import androidx.room.DatabaseView;
 
 @DatabaseView("SELECT \n" +
-        "    carving_id,\n" +
-        "    description,\n" +
-        "    filename\n" +
+        "    carving_description.carving_id,\n" +
+        "    carving_description.description,\n" +
+        "    multimedia.filename\n" +
         "FROM\n" +
         "    carving_description \n" +
         "        LEFT JOIN multimedia \n" +
-        "        ON multimedia_id = id ")
+        "        ON carving_description.multimedia_id = multimedia.id ")
 public class CarvingDescriptionView {
     private int carving_id;
     private String description;
