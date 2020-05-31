@@ -1,5 +1,6 @@
 package com.example.wintecwaiata;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Query;
 
@@ -15,5 +16,5 @@ public interface CarvingDescriptionViewDao {
             "    carvingdescriptionview\n" +
             "WHERE\n" +
             "    carvingdescriptionview.carving_id = :carvingId")
-    List<CarvingDescriptionView> getDescription(int carvingId);
+    LiveData<List<CarvingDescriptionView>> getDescription(int carvingId);
 }

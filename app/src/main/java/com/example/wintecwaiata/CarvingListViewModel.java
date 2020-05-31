@@ -58,7 +58,7 @@ public class CarvingListViewModel extends AndroidViewModel {
         return carvingList;
     }
 
-    public List<CarvingDescriptionView> getCarvingDescriptionView(int carvingId) {
+    public LiveData<List<CarvingDescriptionView>> getCarvingDescriptionView(int carvingId) {
         return appRepository.getCarvingDescriptionView(carvingId);
     }
 

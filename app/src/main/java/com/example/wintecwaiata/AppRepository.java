@@ -43,7 +43,7 @@ public class AppRepository {
         return carvingListViews;
     }
 
-    public List<CarvingDescriptionView> getCarvingDescriptionView(int carvingId) {
+    public LiveData<List<CarvingDescriptionView>> getCarvingDescriptionView(int carvingId) {
         return carvingDescriptionViewDao.getDescription(carvingId);
     }
 

@@ -6,9 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".CarvingDescriptionActivity">
 
-    <TextView
-        android:id="@+id/textViewID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_desc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:listitem="@layout/carving_with_description" />
 </androidx.constraintlayout.widget.ConstraintLayout>

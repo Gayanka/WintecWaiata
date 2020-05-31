@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class CarvingListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.activity_carving_list, container, false);
-        RecyclerView recyclerView = v.findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = v.findViewById(R.id.recycler_view_desc);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setHasFixedSize(true);
 
