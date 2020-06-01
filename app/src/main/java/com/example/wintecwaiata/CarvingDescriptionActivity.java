@@ -5,10 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
-import android.widget.TextView;
-
 import java.util.List;
 
 import static com.example.wintecwaiata.CarvingListFragment.*;
@@ -23,7 +20,7 @@ public class CarvingDescriptionActivity extends AppCompatActivity {
         int id = getIntent().getIntExtra(CARVING_ID_NAME, 0);
         RecyclerView recyclerView = findViewById(R.id.recycler_view_desc);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        //recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
 
         final CarvingDescriptionAdapter carvingDescriptionAdapter = new CarvingDescriptionAdapter();
         recyclerView.setAdapter(carvingDescriptionAdapter);
@@ -35,5 +32,6 @@ public class CarvingDescriptionActivity extends AppCompatActivity {
                 carvingDescriptionAdapter.setCarvingDescriptionViewList(carvingDescriptionViews);
             }
         });
+
     }
 }

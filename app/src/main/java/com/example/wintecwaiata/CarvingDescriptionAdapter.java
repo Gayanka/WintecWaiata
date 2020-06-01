@@ -1,5 +1,7 @@
 package com.example.wintecwaiata;
 
+import android.graphics.BitmapFactory;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,21 +29,24 @@ public class CarvingDescriptionAdapter extends RecyclerView.Adapter<CarvingDescr
     @Override
     public void onBindViewHolder(@NonNull CarvingDescriptionHolder holder, int position) {
         CarvingDescriptionView currentDescription = carvingDescriptionViewList.get(position);
-        holder.textViewDescription.setText(currentDescription.getDescription());
-        try {
-            String filename = currentDescription.getFilename();
-            if (filename.contains(".")) {
-                filename = filename.substring(0, filename.indexOf("."));
-            }
-            Field field = R.raw.class.getField(filename);
-            holder.imageViewCarvingDescription.setImageResource(field.getInt(null));
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        holder.textViewDescription.setText(Html.fromHtml(currentDescription.getDescription()));
+        //try {
+        //    String filename = currentDescription.getFilename();
+        //    if (filename.contains(".")) {
+        //        filename = filename.substring(0, filename.indexOf("."));
+        //    }
+        //    Field field = R.raw.class.getField(filename);
+        //    holder.imageViewCarvingDescription.setImageResource(field.getInt(null));
+        //} catch (NoSuchFieldException | IllegalAccessException e) {
+        //    e.printStackTrace();
+        //}
+        byte[] bitmapdata = currentDescription.getFileData();
+        holder.imageViewCarvingDescription.setImageBitmap(BitmapFactory.decodeByteArray(bitmapdata, 0, bitmapdata.length));
     }
 
     public void setCarvingDescriptionViewList(List<CarvingDescriptionView> carvingDescriptionViewList) {
         this.carvingDescriptionViewList = carvingDescriptionViewList;
+        notifyDataSetChanged();
     }
 
     @Override

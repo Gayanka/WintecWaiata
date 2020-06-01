@@ -11,7 +11,8 @@ public interface CarvingDescriptionViewDao {
     @Query("SELECT\n" +
             "    carvingdescriptionview.carving_id,\n" +
             "    carvingdescriptionview.description,\n" +
-            "    carvingdescriptionview.filename\n" +
+            "    carvingdescriptionview.filename,\n" +
+            "    carvingdescriptionview.fileData\n" +
             "FROM\n" +
             "    carvingdescriptionview\n" +
             "WHERE\n" +
