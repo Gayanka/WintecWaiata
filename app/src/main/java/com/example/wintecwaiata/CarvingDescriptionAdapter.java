@@ -30,18 +30,16 @@ public class CarvingDescriptionAdapter extends RecyclerView.Adapter<CarvingDescr
     public void onBindViewHolder(@NonNull CarvingDescriptionHolder holder, int position) {
         CarvingDescriptionView currentDescription = carvingDescriptionViewList.get(position);
         holder.textViewDescription.setText(Html.fromHtml(currentDescription.getDescription()));
-        //try {
-        //    String filename = currentDescription.getFilename();
-        //    if (filename.contains(".")) {
-        //        filename = filename.substring(0, filename.indexOf("."));
-        //    }
-        //    Field field = R.raw.class.getField(filename);
-        //    holder.imageViewCarvingDescription.setImageResource(field.getInt(null));
-        //} catch (NoSuchFieldException | IllegalAccessException e) {
-        //    e.printStackTrace();
-        //}
-        byte[] bitmapdata = currentDescription.getFileData();
-        holder.imageViewCarvingDescription.setImageBitmap(BitmapFactory.decodeByteArray(bitmapdata, 0, bitmapdata.length));
+        try {
+            String filename = currentDescription.getFilename();
+            if (filename.contains(".")) {
+                filename = filename.substring(0, filename.indexOf("."));
+            }
+            Field field = R.raw.class.getField(filename);
+            holder.imageViewCarvingDescription.setImageResource(field.getInt(null));
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setCarvingDescriptionViewList(List<CarvingDescriptionView> carvingDescriptionViewList) {

@@ -30,7 +30,7 @@ public class CarvingListView {
     private int picture_num;
     private String filename;
 
-    public CarvingListView(int id, String title, int picture_num, String filename) {
+    public CarvingListView(int id, String title, int picture_num, String filename, byte[] fileData) {
         this.id = id;
         this.title = title;
         this.picture_num = picture_num;
@@ -52,4 +52,5 @@ public class CarvingListView {
     public String getFilename() {
         return filename;
     }
+
 }

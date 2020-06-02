@@ -12,11 +12,24 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.io.FileNotFoundException;
 
-@Database(entities = {Carving.class, CarvingDescription.class, Multimedia.class}, views = {CarvingListView.class, CarvingDescriptionView.class}, version = 1)
+@Database(
+        entities = {
+                Carving.class,
+                CarvingDescription.class,
+                Multimedia.class,
+                VideoContent.class,
+                VideoContentDetails.class
+        },
+        views = {
+                CarvingListView.class,
+                CarvingDescriptionView.class,
+                VideoListView.class,
+                VideoDetailsView.class
+        },
+        version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static  final String DATABASE_NAME = "app_database";
     private static AppDatabase instance;
-    private static Context appContext;
 
     public abstract CarvingDao carvingDao();
     public abstract CarvingDescriptionDao carvingDescriptionDao();
@@ -28,7 +41,6 @@ public abstract class AppDatabase extends RoomDatabase {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     AppDatabase.class, DATABASE_NAME).fallbackToDestructiveMigration().addCallback(roomCallback).build();
-            appContext = context;
         }
         return instance;
 
@@ -55,66 +67,19 @@ public abstract class AppDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            try {
-                multimediaDao.insert(new Multimedia("gateway_entrance_01.jpg", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                multimediaDao.insert(new Multimedia("gateway_entrance_02.jpg", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                multimediaDao.insert(new Multimedia("internal_wharenui_post_01.jpg", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                multimediaDao.insert(new Multimedia("internal_wharenui_post_02.png", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                multimediaDao.insert(new Multimedia("memorial_pillar_01.jpg", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                multimediaDao.insert(new Multimedia("pillars_01.jpg", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                multimediaDao.insert(new Multimedia("doorway_lintels_01.png", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                multimediaDao.insert(new Multimedia("doorway_lintels_02.jpg", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                multimediaDao.insert(new Multimedia("window_lintel_01.jpg", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                multimediaDao.insert(new Multimedia("window_lintel_02.jpg", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                multimediaDao.insert(new Multimedia("memorial_pillar_02.jpg", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                multimediaDao.insert(new Multimedia("pillars_02.jpg", appContext));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            multimediaDao.insert(new Multimedia("gateway_entrance_01.jpg"));
+            multimediaDao.insert(new Multimedia("gateway_entrance_02.jpg"));
+            multimediaDao.insert(new Multimedia("internal_wharenui_post_01.jpg"));
+            multimediaDao.insert(new Multimedia("internal_wharenui_post_02.png"));
+            multimediaDao.insert(new Multimedia("memorial_pillar_01.jpg"));
+            multimediaDao.insert(new Multimedia("pillars_01.jpg"));
+            multimediaDao.insert(new Multimedia("doorway_lintels_01.png"));
+            multimediaDao.insert(new Multimedia("doorway_lintels_02.jpg"));
+            multimediaDao.insert(new Multimedia("window_lintel_01.jpg"));
+            multimediaDao.insert(new Multimedia("window_lintel_02.jpg"));
+            multimediaDao.insert(new Multimedia("memorial_pillar_02.jpg"));
+            multimediaDao.insert(new Multimedia("pillars_02.jpg"));
+
 
             carvingDao.insert(new Carving("Waka Maumahara (Memorial Pillar)", 5, 1));
             carvingDao.insert(new Carving("Pou Whakarae (Pillars)", 6, 2));

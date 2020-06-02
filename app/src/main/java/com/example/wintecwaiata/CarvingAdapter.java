@@ -1,6 +1,7 @@
 package com.example.wintecwaiata;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,7 +78,6 @@ public class CarvingAdapter extends RecyclerView.Adapter<CarvingAdapter.CarvingH
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
