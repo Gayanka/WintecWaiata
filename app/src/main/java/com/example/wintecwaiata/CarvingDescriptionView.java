@@ -15,7 +15,7 @@ public class CarvingDescriptionView {
     private String description;
     private String filename;
 
-    public CarvingDescriptionView(int carving_id, String description, String filename, byte[] fileData) {
+    public CarvingDescriptionView(int carving_id, String description, String filename) {
         this.carving_id = carving_id;
         this.description = description;
         this.filename = filename;

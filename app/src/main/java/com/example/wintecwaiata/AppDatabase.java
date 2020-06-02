@@ -1,16 +1,13 @@
 package com.example.wintecwaiata;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.os.AsyncTask;
-
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import java.io.FileNotFoundException;
 
 @Database(
         entities = {
@@ -31,11 +28,24 @@ public abstract class AppDatabase extends RoomDatabase {
     private static  final String DATABASE_NAME = "app_database";
     private static AppDatabase instance;
 
+    // Tables Dao
+    // ---- Carvings
     public abstract CarvingDao carvingDao();
     public abstract CarvingDescriptionDao carvingDescriptionDao();
+    // ---- Videos
+    public abstract VideoContentDao videoContentDao();
+    public abstract VideoContentDetailsDao videoContentDetailsDao();
+    // ---- Multimedia (video and pictures filenames)
     public abstract MultimediaDao multimediaDao();
-    public abstract CarvingDescriptionViewDao carvingDescriptionViewDao();
+
+    // Views Dao
+    // ---- Carvings
     public abstract CarvingListViewDao carvingListViewDao();
+    public abstract CarvingDescriptionViewDao carvingDescriptionViewDao();
+    // ---- Videos
+    public abstract VideoListViewDao videoListViewDao();
+    public abstract VideoDetailsViewDao videoDetailsViewDao();
+
 
     public static synchronized AppDatabase getInstance(Context context) {
         if (instance == null) {
@@ -58,15 +68,21 @@ public abstract class AppDatabase extends RoomDatabase {
         private CarvingDao carvingDao;
         private CarvingDescriptionDao carvingDescriptionDao;
         private MultimediaDao multimediaDao;
+        private VideoContentDao videoContentDao;
+        private VideoContentDetailsDao videoContentDetailsDao;
 
         public PopulateDbAsyncTask(AppDatabase appDatabase) {
             this.carvingDao = appDatabase.carvingDao();
             this.carvingDescriptionDao = appDatabase.carvingDescriptionDao();
             this.multimediaDao = appDatabase.multimediaDao();
+            this.videoContentDao = appDatabase.videoContentDao();
+            this.videoContentDetailsDao = appDatabase.videoContentDetailsDao();
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
+            // Prepopulate tables in background
+            // Drawable pictures for carvings
             multimediaDao.insert(new Multimedia("gateway_entrance_01.jpg"));
             multimediaDao.insert(new Multimedia("gateway_entrance_02.jpg"));
             multimediaDao.insert(new Multimedia("internal_wharenui_post_01.jpg"));
@@ -79,8 +95,31 @@ public abstract class AppDatabase extends RoomDatabase {
             multimediaDao.insert(new Multimedia("window_lintel_02.jpg"));
             multimediaDao.insert(new Multimedia("memorial_pillar_02.jpg"));
             multimediaDao.insert(new Multimedia("pillars_02.jpg"));
+            // Raw video for songs
+            multimediaDao.insert(new Multimedia("ekorekoe_1.mp4"));
+            multimediaDao.insert(new Multimedia("ekorekoe_2.mp4"));
+            multimediaDao.insert(new Multimedia("ekorekoe_3.mp4"));
+            multimediaDao.insert(new Multimedia("hemaimaiaroha_1.mp4"));
+            multimediaDao.insert(new Multimedia("hemaimaiaroha_2.mp4"));
+            multimediaDao.insert(new Multimedia("hemaimaiaroha_3.mp4"));
+            multimediaDao.insert(new Multimedia("itewhare_1.mp4"));
+            multimediaDao.insert(new Multimedia("itewhare_2.mp4"));
+            multimediaDao.insert(new Multimedia("itewhare_3.mp4"));
+            multimediaDao.insert(new Multimedia("puatekowhai_1.mp4"));
+            multimediaDao.insert(new Multimedia("puatekowhai_2.mp4"));
+            multimediaDao.insert(new Multimedia("puatekowhai_3.mp4"));
+            multimediaDao.insert(new Multimedia("pupuketehihiri_1.mp4"));
+            multimediaDao.insert(new Multimedia("pupuketehihiri_2.mp4"));
+            multimediaDao.insert(new Multimedia("pupuketehihiri_3.mp4"));
+            multimediaDao.insert(new Multimedia("tutiramainga_1.mp4"));
+            multimediaDao.insert(new Multimedia("tutiramainga_2.mp4"));
+            multimediaDao.insert(new Multimedia("tutiramainga_3.mp4"));
+            multimediaDao.insert(new Multimedia("waikatoteawa_1.mp4"));
+            multimediaDao.insert(new Multimedia("waikatoteawa_2.mp4"));
+            multimediaDao.insert(new Multimedia("waikatoteawa_3.mp4"));
 
 
+            // Carvings
             carvingDao.insert(new Carving("Waka Maumahara (Memorial Pillar)", 5, 1));
             carvingDao.insert(new Carving("Pou Whakarae (Pillars)", 6, 2));
             carvingDao.insert(new Carving("Pou-tūā-rangi (Internal Wharenui Post)", 4, 3));
@@ -89,6 +128,7 @@ public abstract class AppDatabase extends RoomDatabase {
             carvingDao.insert(new Carving("Pare and Whakawae (Doorway Lintels)", 7, 6));
             carvingDao.insert(new Carving("Kōrupe (Window Lintel)", 9, 7));
 
+            // Carvings Description
             carvingDescriptionDao.insert(new CarvingDescription(
                     1,
                     "<html>\n" +
@@ -255,9 +295,67 @@ public abstract class AppDatabase extends RoomDatabase {
                             "</body>\n" +
                             "</html>",
                     10));
+
+            // Videos
+            videoContentDao.insert(new VideoContent("E Kore Koe E Ngaro", 13, 1));
+            videoContentDao.insert(new VideoContent("He Maimai Aroha nā Tāwhiao", 16, 2));
+            videoContentDao.insert(new VideoContent("Waikato Te Awa", 19, 3));
+            videoContentDao.insert(new VideoContent("Tutira Mai Nga Iwi", 22, 4));
+            videoContentDao.insert(new VideoContent("Pupuke Te Hihiri", 25, 5));
+            videoContentDao.insert(new VideoContent("I Te Whare Whakapiri", 28, 6));
+            videoContentDao.insert(new VideoContent("Pua Te Kōwhai", 31, 7));
+
+            // Lyrics
+            videoContentDetailsDao.insert(new VideoContentDetails(
+                    13,
+                    14,
+                    15,
+                    "<p><b>Text Maori Language</b></p>",
+                    "<p><b>Text English Language</b></p>",
+                    1));
+            videoContentDetailsDao.insert(new VideoContentDetails(
+                    16,
+                    17,
+                    18,
+                    "<p><b>Text Maori Language</b></p>",
+                    "<p><b>Text English Language</b></p>",
+                    2));
+            videoContentDetailsDao.insert(new VideoContentDetails(
+                    19,
+                    20,
+                    21,
+                    "<p><b>Text Maori Language</b></p>",
+                    "<p><b>Text English Language</b></p>",
+                    3));
+            videoContentDetailsDao.insert(new VideoContentDetails(
+                    22,
+                    23,
+                    24,
+                    "<p><b>Text Maori Language</b></p>",
+                    "<p><b>Text English Language</b></p>",
+                    4));
+            videoContentDetailsDao.insert(new VideoContentDetails(
+                    25,
+                    26,
+                    27,
+                    "<p><b>Text Maori Language</b></p>",
+                    "<p><b>Text English Language</b></p>",
+                    5));
+            videoContentDetailsDao.insert(new VideoContentDetails(
+                    28,
+                    29,
+                    30,
+                    "<p><b>Text Maori Language</b></p>",
+                    "<p><b>Text English Language</b></p>",
+                    6));
+            videoContentDetailsDao.insert(new VideoContentDetails(
+                    31,
+                    32,
+                    33,
+                    "<p><b>Text Maori Language</b></p>",
+                    "<p><b>Text English Language</b></p>",
+                    7));
             return null;
         }
     }
-
-
 }

@@ -13,14 +13,19 @@ public class AppRepository {
     private CarvingDao carvingDao;
     private CarvingDescriptionDao carvingDescriptionDao;
     private MultimediaDao multimediaDao;
+    private VideoContentDao videoContentDao;
+    private VideoContentDetailsDao videoContentDetailsDao;
 
     // Views
     private CarvingListViewDao carvingListViewDao;
     private CarvingDescriptionViewDao carvingDescriptionViewDao;
+    private VideoListViewDao videoListViewDao;
+    private VideoDetailsViewDao videoDetailsViewDao;
 
     // Data
     private LiveData<List<CarvingListView>> carvingListViews;
-    //private List<CarvingDescriptionView> carvingDescriptionViews;
+    private LiveData<List<VideoListView>> videoListViews;
+
 
     public AppRepository(Application application) {
         AppDatabase appDatabase = AppDatabase.getInstance(application);
@@ -28,14 +33,18 @@ public class AppRepository {
         carvingDao = appDatabase.carvingDao();
         carvingDescriptionDao = appDatabase.carvingDescriptionDao();
         multimediaDao = appDatabase.multimediaDao();
+        videoContentDao = appDatabase.videoContentDao();
+        videoContentDetailsDao = appDatabase.videoContentDetailsDao();
 
         // Views Dao
         carvingListViewDao = appDatabase.carvingListViewDao();
         carvingDescriptionViewDao = appDatabase.carvingDescriptionViewDao();
+        videoListViewDao = appDatabase.videoListViewDao();
+        videoDetailsViewDao = appDatabase.videoDetailsViewDao();
 
         // Data
         carvingListViews = carvingListViewDao.getCarvingList();
-        //carvingDescriptionViews = carvingDescriptionViewDao.getDescription(0);
+        videoListViews = videoListViewDao.getAllVideos();
     }
 
     // Getters
@@ -45,6 +54,14 @@ public class AppRepository {
 
     public LiveData<List<CarvingDescriptionView>> getCarvingDescriptionView(int carvingId) {
         return carvingDescriptionViewDao.getDescription(carvingId);
+    }
+
+    public LiveData<List<VideoListView>> getVideoListViews() {
+        return videoListViews;
+    }
+
+    public LiveData<List<VideoDetailsView>> getVideoDetails(int videoId) {
+        return videoDetailsViewDao.getVideoDetails(videoId);
     }
 
     // Insert, update and delete data
@@ -213,8 +230,113 @@ public class AppRepository {
         }
     }
 
+    // ---- VideoContent
+    public void insert(VideoContent videoContent) {
+        new InsertVideoContentAsyncTask(videoContentDao).execute(videoContent);
+    }
 
+    private static class InsertVideoContentAsyncTask extends AsyncTask<VideoContent, Void, Void> {
+        private VideoContentDao videoContentDao;
 
+        public InsertVideoContentAsyncTask(VideoContentDao videoContentDao) {
+            this.videoContentDao = videoContentDao;
+        }
 
+        @Override
+        protected Void doInBackground(VideoContent... videoContents) {
+            videoContentDao.insert(videoContents[0]);
+            return null;
+        }
+    }
 
+    public void update(VideoContent videoContent) {
+        new UpdateVideoContentAsyncTask(videoContentDao).execute(videoContent);
+    }
+
+    private static class UpdateVideoContentAsyncTask extends AsyncTask<VideoContent, Void, Void> {
+        private VideoContentDao videoContentDao;
+
+        public UpdateVideoContentAsyncTask(VideoContentDao videoContentDao) {
+            this.videoContentDao = videoContentDao;
+        }
+
+        @Override
+        protected Void doInBackground(VideoContent... videoContents) {
+            videoContentDao.update(videoContents[0]);
+            return null;
+        }
+    }
+
+    public void delete(VideoContent videoContent) {
+        new DeleteVideoContentAsyncTask(videoContentDao).execute(videoContent);
+    }
+
+    private static class DeleteVideoContentAsyncTask extends AsyncTask<VideoContent, Void, Void> {
+        private VideoContentDao videoContentDao;
+
+        public DeleteVideoContentAsyncTask(VideoContentDao videoContentDao) {
+            this.videoContentDao = videoContentDao;
+        }
+
+        @Override
+        protected Void doInBackground(VideoContent... videoContents) {
+            videoContentDao.delete(videoContents[0]);
+            return null;
+        }
+    }
+
+    // ---- VideoContentDetails
+    public void insert(VideoContentDetails videoContentDetails) {
+        new InsertVideoContentDetailsAsyncTask(videoContentDetailsDao).execute(videoContentDetails);
+    }
+
+    private static class InsertVideoContentDetailsAsyncTask extends AsyncTask<VideoContentDetails, Void, Void> {
+        private VideoContentDetailsDao videoContentDetailsDao;
+
+        public InsertVideoContentDetailsAsyncTask(VideoContentDetailsDao videoContentDetailsDao) {
+            this.videoContentDetailsDao = videoContentDetailsDao;
+        }
+
+        @Override
+        protected Void doInBackground(VideoContentDetails... videoContentsDetails) {
+            videoContentDetailsDao.insert(videoContentsDetails[0]);
+            return null;
+        }
+    }
+
+    public void update(VideoContentDetails videoContentDetails) {
+        new UpdateVideoContentDetailsAsyncTask(videoContentDetailsDao).execute(videoContentDetails);
+    }
+
+    private static class UpdateVideoContentDetailsAsyncTask extends AsyncTask<VideoContentDetails, Void, Void> {
+        private VideoContentDetailsDao videoContentDetailsDao;
+
+        public UpdateVideoContentDetailsAsyncTask(VideoContentDetailsDao videoContentDetailsDao) {
+            this.videoContentDetailsDao = videoContentDetailsDao;
+        }
+
+        @Override
+        protected Void doInBackground(VideoContentDetails... videoContentsDetails) {
+            videoContentDetailsDao.update(videoContentsDetails[0]);
+            return null;
+        }
+    }
+
+    public void delete(VideoContentDetails videoContentDetails) {
+        new DeleteVideoContentDetailsAsyncTask(videoContentDetailsDao).execute(videoContentDetails);
+    }
+
+    private static class DeleteVideoContentDetailsAsyncTask extends AsyncTask<VideoContentDetails, Void, Void> {
+        private VideoContentDetailsDao videoContentDetailsDao;
+
+        public DeleteVideoContentDetailsAsyncTask(VideoContentDetailsDao videoContentDetailsDao) {
+            this.videoContentDetailsDao = videoContentDetailsDao;
+        }
+
+        @Override
+        protected Void doInBackground(VideoContentDetails... videoContentsContentDetails) {
+            videoContentDetailsDao.delete(videoContentsContentDetails[0]);
+            return null;
+        }
+    }
 }
