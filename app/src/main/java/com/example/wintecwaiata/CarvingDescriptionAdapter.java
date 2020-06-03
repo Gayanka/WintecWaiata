@@ -35,7 +35,7 @@ public class CarvingDescriptionAdapter extends RecyclerView.Adapter<CarvingDescr
             if (filename.contains(".")) {
                 filename = filename.substring(0, filename.indexOf("."));
             }
-            Field field = R.raw.class.getField(filename);
+            Field field = R.drawable.class.getField(filename);
             holder.imageViewCarvingDescription.setImageResource(field.getInt(null));
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();

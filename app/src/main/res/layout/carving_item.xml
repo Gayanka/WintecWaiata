@@ -17,7 +17,7 @@
             android:layout_height="190dp"
             android:contentDescription="Carving picture"
             android:scaleType="centerCrop"
-            app:srcCompat="@raw/pillars_01" />
+            app:srcCompat="@drawable/pillars_01" />
 
         <TextView
             android:id="@+id/textView_title"

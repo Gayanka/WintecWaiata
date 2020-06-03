@@ -15,7 +15,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
                 CarvingDescription.class,
                 Multimedia.class,
                 VideoContent.class,
-                VideoContentDetails.class
+                VideoContentDetails.class,
+                ExternalHTTP.class
         },
         views = {
                 CarvingListView.class,
@@ -37,6 +38,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract VideoContentDetailsDao videoContentDetailsDao();
     // ---- Multimedia (video and pictures filenames)
     public abstract MultimediaDao multimediaDao();
+    // ---- HTTP addresses
+    public abstract ExternalHTTPDao externalHTTPDao();
 
     // Views Dao
     // ---- Carvings
@@ -70,6 +73,7 @@ public abstract class AppDatabase extends RoomDatabase {
         private MultimediaDao multimediaDao;
         private VideoContentDao videoContentDao;
         private VideoContentDetailsDao videoContentDetailsDao;
+        private ExternalHTTPDao externalHTTPDao;
 
         public PopulateDbAsyncTask(AppDatabase appDatabase) {
             this.carvingDao = appDatabase.carvingDao();
@@ -77,6 +81,7 @@ public abstract class AppDatabase extends RoomDatabase {
             this.multimediaDao = appDatabase.multimediaDao();
             this.videoContentDao = appDatabase.videoContentDao();
             this.videoContentDetailsDao = appDatabase.videoContentDetailsDao();
+            this.externalHTTPDao = appDatabase.externalHTTPDao();
         }
 
         @Override
@@ -355,6 +360,18 @@ public abstract class AppDatabase extends RoomDatabase {
                     "<p><b>Text Maori Language</b></p>",
                     "<p><b>Text English Language</b></p>",
                     7));
+
+            // External HTTP addresses
+            externalHTTPDao.insert(new ExternalHTTP("CarvingListFragment", 0, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/wintec-marae/marae-carvings"));
+            externalHTTPDao.insert(new ExternalHTTP("CarvingDescriptionActivity", 1, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/wintec-marae/marae-carvings/#waka-maumahara"));
+            externalHTTPDao.insert(new ExternalHTTP("CarvingDescriptionActivity", 2, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/wintec-marae/marae-carvings/#pou-whakarae"));
+            externalHTTPDao.insert(new ExternalHTTP("CarvingDescriptionActivity", 3, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/wintec-marae/marae-carvings/#pou-tūā-rangi"));
+            externalHTTPDao.insert(new ExternalHTTP("CarvingDescriptionActivity", 4, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/wintec-marae/marae-carvings/#pou-tūā-rongo"));
+            externalHTTPDao.insert(new ExternalHTTP("CarvingDescriptionActivity", 5, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/wintec-marae/marae-carvings/#tomokanga"));
+            externalHTTPDao.insert(new ExternalHTTP("CarvingDescriptionActivity", 6, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/wintec-marae/marae-carvings/#pare-and-whakawae"));
+            externalHTTPDao.insert(new ExternalHTTP("CarvingDescriptionActivity", 7, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/wintec-marae/marae-carvings/#kōrupe"));
+
+
             return null;
         }
     }

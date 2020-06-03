@@ -16,13 +16,13 @@ import androidx.room.DatabaseView;
 public class VideoListView {
     private int id;
     private String title;
-    private int priprity;
+    private int priority;
     private String filename;
 
-    public VideoListView(int id, String title, int priprity, String filename) {
+    public VideoListView(int id, String title, int priority, String filename) {
         this.id = id;
         this.title = title;
-        this.priprity = priprity;
+        this.priority = priority;
         this.filename = filename;
     }
 
@@ -34,8 +34,8 @@ public class VideoListView {
         return title;
     }
 
-    public int getPriprity() {
-        return priprity;
+    public int getPriority() {
+        return priority;
     }
 
     public String getFilename() {

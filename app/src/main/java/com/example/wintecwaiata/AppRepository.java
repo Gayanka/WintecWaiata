@@ -15,6 +15,7 @@ public class AppRepository {
     private MultimediaDao multimediaDao;
     private VideoContentDao videoContentDao;
     private VideoContentDetailsDao videoContentDetailsDao;
+    private ExternalHTTPDao externalHTTPDao;
 
     // Views
     private CarvingListViewDao carvingListViewDao;
@@ -35,6 +36,7 @@ public class AppRepository {
         multimediaDao = appDatabase.multimediaDao();
         videoContentDao = appDatabase.videoContentDao();
         videoContentDetailsDao = appDatabase.videoContentDetailsDao();
+        externalHTTPDao = appDatabase.externalHTTPDao();
 
         // Views Dao
         carvingListViewDao = appDatabase.carvingListViewDao();
@@ -62,6 +64,14 @@ public class AppRepository {
 
     public LiveData<List<VideoDetailsView>> getVideoDetails(int videoId) {
         return videoDetailsViewDao.getVideoDetails(videoId);
+    }
+
+    public LiveData<String> getExternalLink(String activityName) {
+        return externalHTTPDao.getExternalHTTP(activityName);
+    }
+
+    public LiveData<String> getExternalLink(String activityName, int itemId) {
+        return externalHTTPDao.getExternalHTTP(activityName, itemId);
     }
 
     // Insert, update and delete data
@@ -336,6 +346,61 @@ public class AppRepository {
         @Override
         protected Void doInBackground(VideoContentDetails... videoContentsContentDetails) {
             videoContentDetailsDao.delete(videoContentsContentDetails[0]);
+            return null;
+        }
+    }
+
+    // ---- External Links
+    public void insert(ExternalHTTP externalHTTP) {
+        new InsertExternalHTTPAsyncTask(externalHTTPDao).execute(externalHTTP);
+    }
+
+    private static class InsertExternalHTTPAsyncTask extends AsyncTask<ExternalHTTP, Void, Void> {
+        private ExternalHTTPDao externalHTTPDao;
+
+        public InsertExternalHTTPAsyncTask(ExternalHTTPDao externalHTTPDao) {
+            this.externalHTTPDao = externalHTTPDao;
+        }
+
+        @Override
+        protected Void doInBackground(ExternalHTTP... externalHTTPS) {
+            externalHTTPDao.insert(externalHTTPS[0]);
+            return null;
+        }
+    }
+
+    public void update(ExternalHTTP externalHTTP) {
+        new UpdateExternalHTTPAsyncTask(externalHTTPDao).execute(externalHTTP);
+    }
+
+    private static class UpdateExternalHTTPAsyncTask extends AsyncTask<ExternalHTTP, Void, Void> {
+        private ExternalHTTPDao externalHTTPDao;
+
+        public UpdateExternalHTTPAsyncTask(ExternalHTTPDao externalHTTPDao) {
+            this.externalHTTPDao = externalHTTPDao;
+        }
+
+        @Override
+        protected Void doInBackground(ExternalHTTP... externalHTTPS) {
+            externalHTTPDao.update(externalHTTPS[0]);
+            return null;
+        }
+    }
+
+    public void delete(ExternalHTTP externalHTTP) {
+        new DeleteExternalHTTPAsyncTask(externalHTTPDao).execute(externalHTTP);
+    }
+
+    private static class DeleteExternalHTTPAsyncTask extends AsyncTask<ExternalHTTP, Void, Void> {
+        private ExternalHTTPDao externalHTTPDao;
+
+        public DeleteExternalHTTPAsyncTask(ExternalHTTPDao externalHTTPDao) {
+            this.externalHTTPDao = externalHTTPDao;
+        }
+
+        @Override
+        protected Void doInBackground(ExternalHTTP... externalHTTPS) {
+            externalHTTPDao.delete(externalHTTPS[0]);
             return null;
         }
     }

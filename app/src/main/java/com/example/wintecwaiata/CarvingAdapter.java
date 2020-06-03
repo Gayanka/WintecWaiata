@@ -73,7 +73,7 @@ public class CarvingAdapter extends RecyclerView.Adapter<CarvingAdapter.CarvingH
             if (filename.contains(".")) {
                 filename = filename.substring(0, filename.indexOf("."));
             }
-            Field field = R.raw.class.getField(filename);
+            Field field = R.drawable.class.getField(filename);
             holder.imageViewCarvingPicture.setImageResource(field.getInt(null));
         } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();

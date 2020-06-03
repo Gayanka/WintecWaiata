@@ -46,9 +46,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AboutAppFragment()).commit();
                 break;
+            case R.id.nav_wintecmarae:
+                Intent intent = new Intent(MainActivity.this, VideoPlaylistActivity.class);
+                startActivity(intent);
+                break;
             case R.id.nav_carvings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new CarvingListFragment()).commit();
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
