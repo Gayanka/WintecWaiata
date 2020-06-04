@@ -4,11 +4,13 @@ package com.example.wintecwaiata;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ import java.util.List;
 public class CarvingListFragment extends Fragment {
 
     public static final String CARVING_ID_NAME = "carving_id";
+    public static final String CARVING_TITLE_NAME = "carving_title";
     private CarvingListViewModel carvingListViewModel;
 
     @Nullable
@@ -45,12 +48,13 @@ public class CarvingListFragment extends Fragment {
                     public void OnItemClick(int position) {
                         Intent intent = new Intent(v.getContext(), CarvingDescriptionActivity.class);
                         intent.putExtra(CARVING_ID_NAME, carvingListViews.get(position).getId());
+                        intent.putExtra(CARVING_TITLE_NAME, carvingListViews.get(position).getTitle());
                         startActivity(intent);
                     }
                 });
             }
         });
         return v;
-    }
 
+    }
 }

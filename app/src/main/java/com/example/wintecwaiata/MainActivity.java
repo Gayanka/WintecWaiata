@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Wintec Waiata");
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_layout);
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_carvings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new CarvingListFragment()).commit();
+                getSupportActionBar().setTitle("Carvings");
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

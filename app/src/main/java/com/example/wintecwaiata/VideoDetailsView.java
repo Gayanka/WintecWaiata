@@ -14,10 +14,10 @@ import androidx.room.DatabaseView;
         "        LEFT JOIN multimedia multimedia_karaoke\n" +
         "        ON video_content_details.multimedia_id_karaoke = multimedia_karaoke.id\n" +
         "        LEFT JOIN multimedia multimedia_lyrics\n" +
-        "        ON video_content_details.multimedia_id_karaoke = multimedia_lyrics.id\n" +
+        "        ON video_content_details.multimedia_id_lyrics = multimedia_lyrics.id\n" +
         "        LEFT JOIN multimedia multimedia_audio\n" +
         "        " +
-        "ON video_content_details.multimedia_id_karaoke = multimedia_audio.id")
+        "ON video_content_details.multimedia_id_audio = multimedia_audio.id")
 public class VideoDetailsView {
     private int videoId;
     private String textMaori;

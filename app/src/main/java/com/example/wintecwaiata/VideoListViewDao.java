@@ -8,6 +8,6 @@ import java.util.List;
 
 @Dao
 public interface VideoListViewDao {
-    @Query("SELECT * FROM VideoListView")
+    @Query("SELECT * FROM VideoListView ORDER BY priority")
     LiveData<List<VideoListView>> getAllVideos();
 }
