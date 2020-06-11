@@ -3,6 +3,7 @@ package com.example.wintecwaiata;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 public class MainPageFragment extends Fragment {
     private VideoListViewModel videoListViewModel;
@@ -53,8 +56,8 @@ public class MainPageFragment extends Fragment {
                     public void OnItemClick(int position) {
                         Intent intent = new Intent(view.getContext(), VideoPlayerActivity.class);
                         intent.putExtra(VIDEO_ID_NAME, videoListViews.get(position).getId());
+                        //Log.d(TAG, "OnItemClick: " + videoListViews.get(position).getId());
                         intent.putExtra(VIDEO_TITLE_NAME, videoListViews.get(position).getTitle());
-                        intent.putExtra(VIDEO_FILE_NAME, videoListViews.get(position).getFilename());
                         startActivity(intent);
                     }
                 });

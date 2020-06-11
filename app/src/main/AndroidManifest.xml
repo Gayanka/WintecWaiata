@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/CustomActivityTheme">
-        <activity android:name=".CarvingDescriptionActivity"></activity>
+        <activity android:name=".CarvingDescriptionActivity"
+            android:theme="@style/AppTheme"></activity>
         <!--activity android:name=".CarvingListActivity" /-->
-        <activity android:name=".VideoPlayerActivity" />
+        <activity android:name=".VideoPlayerActivity"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
