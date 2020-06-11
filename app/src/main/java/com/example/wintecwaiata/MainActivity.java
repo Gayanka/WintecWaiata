@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        if(savedInstanceState == null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new MainPageFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_mainpage);
+        }
+
     }
 
     @Override
@@ -42,18 +48,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_mainpage:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new MainPageFragment()).commit();
+                getSupportActionBar().setTitle("Wintec Waiata");
                 break;
             case R.id.nav_aboutapp:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AboutAppFragment()).commit();
+                getSupportActionBar().setTitle("About App");
                 break;
             case R.id.nav_relationshipwithtainui:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new TainuiFragment()).commit();
                 break;
             case R.id.nav_wintecmarae:
-                Intent intent = new Intent(MainActivity.this, VideoPlaylistActivity.class);
-                startActivity(intent);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new MareaFragment()).commit();
+                getSupportActionBar().setTitle("Wintec Marae");
                 break;
             case R.id.nav_carvings:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -74,8 +83,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public void startActivity(){
-        Intent intent = new Intent(this, VideoPlaylistActivity.class);
-        startActivity(intent);
-    }
 }

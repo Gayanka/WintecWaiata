@@ -2,26 +2,37 @@ package com.example.wintecwaiata;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static com.example.wintecwaiata.MainPageFragment.*;
 
 
 public class VideoPlayerActivity extends AppCompatActivity {
+    private static final String TAG = "TAG";
+    private VideoListViewModel videoListViewModel;
+
     private TabLayout mainTab;
     private TabItem tabKaraoke,tabLyrics,tabAudio;
     private ViewPager viewPager;
     private int videoCode;
     private String videoName;
     private ActionBar actionBar;
-    ArrayList<String> videoLocation;
+    ArrayList<String> videoLocation = new ArrayList<String>(3);
     ReadAllRawData readAllRawData = new ReadAllRawData();
 //    SelectedBundle selectedBundle;
 
@@ -44,14 +55,19 @@ public class VideoPlayerActivity extends AppCompatActivity {
 //                mainTab.getTabCount());
 
         Intent intent = getIntent();
-        videoCode = intent.getIntExtra("videoCode", 0);
-        videoName = intent.getStringExtra("videoName");
+        videoCode = intent.getIntExtra(VIDEO_ID_NAME, 0);
+        videoName = intent.getStringExtra(VIDEO_TITLE_NAME);
         actionBar.setTitle(videoName);
-        try {
-            setVideo();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+
+        videoListViewModel = new ViewModelProvider(this, new VideoListViewModelFactory(this.getApplication())).get(VideoListViewModel.class);
+        videoListViewModel.getVideoDetails(videoCode).observe(this, new Observer<List<VideoDetailsView>>() {
+            @Override
+            public void onChanged(List<VideoDetailsView> videoDetailsViews) {
+                videoDetailsViews.get(0).getTextMaori();
+                videoDetailsViews.get(0).getTextMaori();
+            }
+        });
+
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), mainTab.getTabCount());
         viewPager.setAdapter(pagerAdapter);
@@ -74,32 +90,6 @@ public class VideoPlayerActivity extends AppCompatActivity {
         });
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mainTab));
-    }
-
-    //send selected video to fragment
-    public Bundle setVideo() throws IllegalAccessException {
-
-        readAllRawData.listRaw();
-
-            if (videoCode == 0) {
-                videoLocation = readAllRawData.listEkorekoe;
-            } else if (videoCode == 1) {
-                videoLocation = readAllRawData.listHemaimaiaroha;
-            } else if (videoCode == 2) {
-                videoLocation = readAllRawData.listWaikatoteawa;
-            } else if (videoCode == 3) {
-                videoLocation = readAllRawData.listTutiramainga;
-            } else if (videoCode == 4) {
-                videoLocation = readAllRawData.listpupuketehihiri;
-            } else if (videoCode == 5) {
-                videoLocation = readAllRawData.listItewhare;
-            } else if (videoCode == 6) {
-                videoLocation = readAllRawData.listPuatekowhai;
-            }
-
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("video",videoLocation);
-        return bundle;
     }
 
 }
