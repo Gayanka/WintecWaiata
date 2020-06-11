@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/CustomActivityTheme">
-        <activity android:name=".CarvingDescriptionActivity"></activity>
-        <!--activity android:name=".CarvingListActivity" /-->
+        <activity android:name=".MaraeInfo"></activity>
+        <activity android:name=".StartActivity" />
+        <activity android:name=".CarvingDescriptionActivity" /> <!-- activity android:name=".CarvingListActivity" / -->
         <activity android:name=".VideoPlayerActivity" />
         <activity android:name=".VideoPlaylistActivity" />
         <activity
