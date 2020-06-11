@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import static android.content.ContentValues.TAG;
 import static com.example.wintecwaiata.MainPageFragment.VIDEO_ID_NAME;
 
 
@@ -40,6 +42,7 @@ public class MaoriLyricsFragment extends Fragment {
 
         Intent intent = getActivity().getIntent();
         videoCode = intent.getIntExtra(VIDEO_ID_NAME, 0);
+        Log.d(TAG, "onCreateView: " + videoCode);
 
         videoListViewModel = new ViewModelProvider(this, new VideoListViewModelFactory(getActivity().getApplication())).get(VideoListViewModel.class);
         videoListViewModel.getVideoDetails(videoCode).observe(this, new Observer<List<VideoDetailsView>>() {
