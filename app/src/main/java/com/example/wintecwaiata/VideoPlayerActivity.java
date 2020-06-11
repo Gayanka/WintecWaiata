@@ -64,7 +64,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<VideoDetailsView> videoDetailsViews) {
                 videoDetailsViews.get(0).getTextMaori();
-                videoDetailsViews.get(0).getTextMaori();
+                videoDetailsViews.get(0).getTextEnglish();
             }
         });
 
