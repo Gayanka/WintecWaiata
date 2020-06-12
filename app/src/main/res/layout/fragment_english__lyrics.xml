@@ -11,15 +11,16 @@
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:scrollbarAlwaysDrawVerticalTrack="true">
+
         <TextView
             android:id="@+id/englishLyrics"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/hello_blank_fragment"
-            android:textSize="18sp"
             android:textAlignment="center"
-            android:verticalScrollbarPosition="right"
-            />
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:verticalScrollbarPosition="right" />
     </ScrollView>
 
 

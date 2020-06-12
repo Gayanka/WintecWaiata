@@ -78,6 +78,7 @@ public class KaraokeFragment extends Fragment {
                 }
             }
         });
+
         return v;
     }
 
