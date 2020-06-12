@@ -34,9 +34,6 @@ public class VideoPlayerActivity extends AppCompatActivity {
     private int videoCode;
     private String videoName;
     private ActionBar actionBar;
-    ArrayList<String> videoLocation = new ArrayList<String>(3);
-    ReadAllRawData readAllRawData = new ReadAllRawData();
-//    SelectedBundle selectedBundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

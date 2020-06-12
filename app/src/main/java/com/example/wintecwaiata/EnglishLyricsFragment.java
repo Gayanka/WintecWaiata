@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +26,6 @@ import static com.example.wintecwaiata.MainPageFragment.VIDEO_ID_NAME;
 public class EnglishLyricsFragment extends Fragment {
     private TextView lyrics;
     private VideoListViewModel videoListViewModel;
-    private String mLyrics;
     private int videoCode;
 
     public EnglishLyricsFragment() {
@@ -48,8 +48,7 @@ public class EnglishLyricsFragment extends Fragment {
         videoListViewModel.getVideoDetails(videoCode).observe(this, new Observer<List<VideoDetailsView>>() {
             @Override
             public void onChanged(List<VideoDetailsView> videoDetailsViews) {
-                mLyrics = videoDetailsViews.get(0).getTextEnglish();
-                lyrics.setText(mLyrics);
+                lyrics.setText(Html.fromHtml(videoDetailsViews.get(0).getTextEnglish()));
             }
         });
 
