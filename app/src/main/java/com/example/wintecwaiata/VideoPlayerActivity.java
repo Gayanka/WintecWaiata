@@ -61,6 +61,8 @@ public class VideoPlayerActivity extends AppCompatActivity {
         videoCode = intent.getIntExtra(VIDEO_ID_NAME, 0);
         videoName = intent.getStringExtra(VIDEO_TITLE_NAME);
         actionBar.setTitle(videoName);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
+                WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), mainTab.getTabCount());
         viewPager.setAdapter(pagerAdapter);

@@ -1,6 +1,7 @@
 package com.example.wintecwaiata;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.MediaController;
 import android.widget.VideoView;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -84,6 +87,29 @@ public class LyricsFragment extends Fragment {
                 mediaController.show();
             }
         }
+    }
+
+    @Override
+    public void onResume() {
+        videoView.resume();
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        videoView.suspend();
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        videoView.stopPlayback();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
 }
