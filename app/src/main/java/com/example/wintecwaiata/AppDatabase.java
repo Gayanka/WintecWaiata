@@ -107,22 +107,21 @@ public abstract class AppDatabase extends RoomDatabase {
             multimediaDao.insert(new Multimedia("hemaimaiaroha_1.mp4"));
             multimediaDao.insert(new Multimedia("hemaimaiaroha_2.mp4"));
             multimediaDao.insert(new Multimedia("hemaimaiaroha_3.mp4"));
+            multimediaDao.insert(new Multimedia("waikatoteawa_1.mp4"));
+            multimediaDao.insert(new Multimedia("waikatoteawa_2.mp4"));
+            multimediaDao.insert(new Multimedia("waikatoteawa_3.mp4"));
+            multimediaDao.insert(new Multimedia("tutiramainga_1.mp4"));
+            multimediaDao.insert(new Multimedia("tutiramainga_2.mp4"));
+            multimediaDao.insert(new Multimedia("tutiramainga_3.mp4"));
+            multimediaDao.insert(new Multimedia("pupuketehihiri_1.mp4"));
+            multimediaDao.insert(new Multimedia("pupuketehihiri_2.mp4"));
+            multimediaDao.insert(new Multimedia("pupuketehihiri_3.mp4"));
             multimediaDao.insert(new Multimedia("itewhare_1.mp4"));
             multimediaDao.insert(new Multimedia("itewhare_2.mp4"));
             multimediaDao.insert(new Multimedia("itewhare_3.mp4"));
             multimediaDao.insert(new Multimedia("puatekowhai_1.mp4"));
             multimediaDao.insert(new Multimedia("puatekowhai_2.mp4"));
             multimediaDao.insert(new Multimedia("puatekowhai_3.mp4"));
-            multimediaDao.insert(new Multimedia("pupuketehihiri_1.mp4"));
-            multimediaDao.insert(new Multimedia("pupuketehihiri_2.mp4"));
-            multimediaDao.insert(new Multimedia("pupuketehihiri_3.mp4"));
-            multimediaDao.insert(new Multimedia("tutiramainga_1.mp4"));
-            multimediaDao.insert(new Multimedia("tutiramainga_2.mp4"));
-            multimediaDao.insert(new Multimedia("tutiramainga_3.mp4"));
-            multimediaDao.insert(new Multimedia("waikatoteawa_1.mp4"));
-            multimediaDao.insert(new Multimedia("waikatoteawa_2.mp4"));
-            multimediaDao.insert(new Multimedia("waikatoteawa_3.mp4"));
-
 
             // Carvings
             carvingDao.insert(new Carving("Waka Maumahara (Memorial Pillar)", 5, 1));

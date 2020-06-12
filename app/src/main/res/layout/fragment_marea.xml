@@ -9,6 +9,7 @@
         android:text="Marea Fragment"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:fontFamily="sans-serif"
         />
 
 </RelativeLayout>

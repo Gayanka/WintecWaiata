@@ -1,6 +1,7 @@
 package com.example.wintecwaiata;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,12 +11,12 @@ import android.view.ViewGroup;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
@@ -45,18 +46,10 @@ public class KaraokeFragment extends Fragment {
         videoView = v.findViewById(R.id.videoKaraoke);
 
         //get the mother activity and load the video location
-//        VideoPlayerActivity videoPlayerActivity = (VideoPlayerActivity) getActivity();
-//        Bundle results = null;
-//        try {
-//            results = videoPlayerActivity.setVideo();
-//        } catch (IllegalAccessException e) {
-//            e.printStackTrace();
-//        }
-//        ArrayList<String> video = results.getStringArrayList("video");
-//        ArrayList<String> video = this.getArguments().getStringArrayList("video");
         Intent intent = getActivity().getIntent();
         videoCode = intent.getIntExtra(VIDEO_ID_NAME, 0);
         Log.d(TAG, "onCreateView: " + videoCode);
+
         videoListViewModel = new ViewModelProvider(this, new VideoListViewModelFactory(getActivity().getApplication())).get(VideoListViewModel.class);
         videoListViewModel.getVideoDetails(videoCode).observe(this, new Observer<List<VideoDetailsView>>() {
             @Override
@@ -73,6 +66,7 @@ public class KaraokeFragment extends Fragment {
                     mediaController = new MediaController(v.getContext());
                     videoView.setMediaController(mediaController);
                     mediaController.setAnchorView(videoView);
+                    videoView.start();
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
@@ -89,12 +83,36 @@ public class KaraokeFragment extends Fragment {
         if (this.isVisible()){
             if (!isVisibleToUser){
                 videoView.pause();
+                mediaController.hide();
             }
 
             if (isVisibleToUser){
-                videoView.pause();
+                mediaController.show();
             }
         }
     }
 
+
+    @Override
+    public void onResume() {
+        videoView.resume();
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        videoView.suspend();
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        videoView.stopPlayback();
+        super.onDestroy();
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
 }

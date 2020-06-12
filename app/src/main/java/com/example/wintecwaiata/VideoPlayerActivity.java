@@ -1,8 +1,10 @@
 package com.example.wintecwaiata;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 
@@ -59,16 +61,6 @@ public class VideoPlayerActivity extends AppCompatActivity {
         videoCode = intent.getIntExtra(VIDEO_ID_NAME, 0);
         videoName = intent.getStringExtra(VIDEO_TITLE_NAME);
         actionBar.setTitle(videoName);
-
-        videoListViewModel = new ViewModelProvider(this, new VideoListViewModelFactory(this.getApplication())).get(VideoListViewModel.class);
-        videoListViewModel.getVideoDetails(videoCode).observe(this, new Observer<List<VideoDetailsView>>() {
-            @Override
-            public void onChanged(List<VideoDetailsView> videoDetailsViews) {
-                videoDetailsViews.get(0).getTextMaori();
-                videoDetailsViews.get(0).getTextEnglish();
-            }
-        });
-
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), mainTab.getTabCount());
         viewPager.setAdapter(pagerAdapter);

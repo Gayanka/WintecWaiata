@@ -77,10 +77,11 @@ public class LyricsFragment extends Fragment {
         if (this.isVisible()){
             if (!isVisibleToUser){
                 videoView.pause();
+                mediaController.hide();
             }
 
             if (isVisibleToUser){
-                videoView.pause();
+                mediaController.show();
             }
         }
     }

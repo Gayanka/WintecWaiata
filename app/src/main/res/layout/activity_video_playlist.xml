@@ -6,15 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".VideoPlaylistActivity">
+    tools:context=".MainPageFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
         android:padding="8dp"
         android:text="7 Songs"
         android:textColor="#474747"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_videolist"

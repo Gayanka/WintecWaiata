@@ -15,6 +15,7 @@
         android:padding="8dp"
         android:text="7 Songs"
         android:textColor="#474747"
+        android:fontFamily="sans-serif"
         android:textSize="24sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
