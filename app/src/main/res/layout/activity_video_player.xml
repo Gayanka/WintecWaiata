@@ -44,38 +44,37 @@
         android:layout_below="@+id/tabLayout"
         android:background="#000000"/>
 
-    <FrameLayout
-        android:layout_width="wrap_content"
+    <!--<FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/viewPager">
+        android:layout_below="@+id/viewPager">-->
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLyricsView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="#3F4040">
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLyricsView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewPager"
+        android:background="#3F4040">
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabMaori"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Māori" />
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabEnglish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="English" />
-
-        </com.google.android.material.tabs.TabLayout>
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/pagerView"
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabMaori"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tabLyricsView"/>
-    </FrameLayout>
+            android:text="Māori" />
 
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabEnglish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English" />
+
+    </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pagerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabLyricsView"/>
+
+    <!-- </FrameLayout>-->
 
 </RelativeLayout>

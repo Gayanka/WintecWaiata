@@ -315,49 +315,196 @@ public abstract class AppDatabase extends RoomDatabase {
                     13,
                     14,
                     15,
-                    "<p><b>Text Maori Language</b></p>",
+                    "<html>\n" +
+                            "<body>\n" +
+                            "<p><span>E kore koe e ngaro he kākano i ruia\n" +
+                            "Kākano a te Kaahu e tū nei e\n" +
+                            "Te Kōpū Mānia, te ngāwhā whakatupu\n" +
+                            "Ka tupu he tangata, rere ki te ao\n" +
+                            "Horahia Matariki, kūmea ngā waka\n" +
+                            "Herea ki te pou o te aroha e\n" +
+                            "Te Atairangikaahu, tāiri kei runga\n" +
+                            "Ko Kīngi Tūheitia ki te whenua e\n" +
+                            "Piki ake Tāwhaki, tāhūhū matapū\n" +
+                            "Ngā kete wānanga e toru e\n" +
+                            "Whītikitia rā, ka turuturu iho\n" +
+                            "E ko Te Kuratini o Waikato e.</span></p>\n" +
+                            "</body>\n" +
+                            "</html>",
                     "<p><b>Text English Language</b></p>",
                     1));
             videoContentDetailsDao.insert(new VideoContentDetails(
                     16,
                     17,
                     18,
-                    "<p><b>Text Maori Language</b></p>",
+                    "<html>\n" +
+                            "<body>\n" +
+                            "<p><span>Ka mātakitaki iho au ki te riu o Waikato\n" +
+                            "Anō nei hei kapo kau ake māku\n" +
+                            "Ki te kapu o taku ringa,\n" +
+                            "Ka whakamiri noa I tōna aratau,\n" +
+                            "E tia nei he tupu pua hou.\n" +
+                            "\n" +
+                            "Kia hiwa ake au I te tihi o Pirongia,\n" +
+                            "Inā hei toronga whakaruruhau mōna\n" +
+                            "Ki tōku tauawhirotanga.\n" +
+                            "\n" +
+                            "Anā! Te ngoto o tōna ngāwhā\n" +
+                            "I ōna uma kīhai I ārikarika\n" +
+                            "A Maungatautari, a Maungakawa,\n" +
+                            "Ōku puke maunga, ngā taonga tuku iho:\n" +
+                            "Hoki ake nei au ki tōku awa koiora\n" +
+                            "Me ōna pikonga\n" +
+                            "He kura tangihia o te mātāmuri.\n" +
+                            "\n" +
+                            "E whakawhiti atu ai I te kōpū mānia\n" +
+                            "O Kirikiriroa\n" +
+                            "Me ōna māra kai, te ngāwhā whakatupu\n" +
+                            "Ake o te whenua mōmona,\n" +
+                            "Hei kawe ki Ngāruawāhia,\n" +
+                            "Te huinga o te tangata.\n" +
+                            "\n" +
+                            "Arā, te pae haumako, hei okiokinga mō\n" +
+                            "Taku upoko,\n" +
+                            "Hei tirohanga atu mā raro I ngā hūhā\n" +
+                            "O Taupiri.\n" +
+                            "\n" +
+                            "Kei reira rā, kei te oroko hanganga o te tangata\n" +
+                            "Wāhia te tungaroa o te whare,\n" +
+                            "Te whakaputanga mō te Kīngi.</span></p>\n" +
+                            "</body>\n" +
+                            "</html>",
                     "<p><b>Text English Language</b></p>",
                     2));
             videoContentDetailsDao.insert(new VideoContentDetails(
                     19,
                     20,
                     21,
-                    "<p><b>Text Maori Language</b></p>",
+                    "<html>\n" +
+                            "<body>\n" +
+                            "<p><span>Waikato te awa\n" +
+                            "Katohia, katohia he wai māu\n" +
+                            "Katohia he wai māu\n" +
+                            "Ka eke ki Te Pūaha o Waikato\n" +
+                            "Te awa; he piko, he taniwha\n" +
+                            "He piko, he taniwha\n" +
+                            "Kia tūpato rā kei tahuri koe\n" +
+                            "I ngā au kaha o Waikato\n" +
+                            "Whakamau tō titiro ki tawhiti rā\n" +
+                            "Ko Taupiri te maunga\n" +
+                            "Pōtatau te tangata\n" +
+                            "Te mauri o te motu e\n" +
+                            "E hoe tō waka ki Ngāruawāhia\n" +
+                            "Tūrangawaewae mō te ao katoa\n" +
+                            "Te tongi whakamutunga a Matutaera\n" +
+                            "Auē hoki auē</span></p>\n" +
+                            "</body>\n" +
+                            "</html>",
                     "<p><b>Text English Language</b></p>",
                     3));
             videoContentDetailsDao.insert(new VideoContentDetails(
                     22,
                     23,
                     24,
-                    "<p><b>Text Maori Language</b></p>",
-                    "<p><b>Text English Language</b></p>",
+                    "<html>\n" +
+                            "<body>\n" +
+                            "<p><span>Tūtira mai ngā iwi,\n" +
+                            "tātou tātou e\n" +
+                            "Tūtira mai ngā iwi,\n" +
+                            "tātou tātou e\n" +
+                            "Whai-a te marama-tanga,\n" +
+                            "me te aroha - e ngā iwi!\n" +
+                            "Ki-a ko tapa tahi,\n" +
+                            "Ki-a ko-tahi rā\n" +
+                            "Tātou tātou e\n" +
+                            "(Repeat)\n" +
+                            "\n" +
+                            "Tā-tou tā-tou e E!!\n" +
+                            "Hi aue hei !!!</span></p>\n" +
+                            "</body>\n" +
+                            "</html>",
+                    "<html>\n" +
+                            "<body>\n" +
+                            "<p><span>Line up together people\n" +
+                            "All of us, all of us\n" +
+                            "Stand in rows people\n" +
+                            "All of us, all of us\n" +
+                            "Seek after knowledge\n" +
+                            "and love of others - everyone\n" +
+                            "Think as one\n" +
+                            "Act as one\n" +
+                            "All of us, all of us\n" +
+                            "\n" +
+                            "All of us, All of us!!\n" +
+                            "Hi aue hei !!!</span></p>\n" +
+                            "</body>\n" +
+                            "</html>",
                     4));
             videoContentDetailsDao.insert(new VideoContentDetails(
                     25,
                     26,
                     27,
-                    "<p><b>Text Maori Language</b></p>",
+                    "<html>\n" +
+                            "<body>\n" +
+                            "<p><span>Piki ake e tama e Hine\n" +
+                            "I te ahurei o te Kuratini o Waikato\n" +
+                            "He mātāpono whakaū kounga\n" +
+                            "Ka whakaata i te angitū\n" +
+                            "\n" +
+                            "Pupuke te hihiri\n" +
+                            "Pupuke te mahara\n" +
+                            "Pupuke te wānanga a te Kore\n" +
+                            "\n" +
+                            "Nō ngā kete i pikihia e Tāwhaki\n" +
+                            "He wairua, he mauri, he mana, he reo\n" +
+                            "He māramatanga, he mātauranga\n" +
+                            "He iho o te ahurea</span></p>\n" +
+                            "</body>\n" +
+                            "</html>",
                     "<p><b>Text English Language</b></p>",
                     5));
             videoContentDetailsDao.insert(new VideoContentDetails(
                     28,
                     29,
                     30,
-                    "<p><b>Text Maori Language</b></p>",
+                    "<html>\n" +
+                            "<body>\n" +
+                            "<p><span>I te whare whakapiri a Tāne\n" +
+                            "Roto te Kuratini o Waikato\n" +
+                            "Ka puta ngā mamaetanga\n" +
+                            "Rere iho ko ngā roimata\n" +
+                            "Auē, te arohanui\n" +
+                            "\n" +
+                            "Homai, homai taku Māoritanga\n" +
+                            "Whāngaihia mai tōku reo tuku iho\n" +
+                            "He kaiwhakaoho i tōku wairua\n" +
+                            "\n" +
+                            "Kua ngaro te korekore\n" +
+                            "Puāwai ana ko ahau\n" +
+                            "He Māori tū tangata</span></p>\n" +
+                            "</body>\n" +
+                            "</html>",
                     "<p><b>Text English Language</b></p>",
                     6));
             videoContentDetailsDao.insert(new VideoContentDetails(
                     31,
                     32,
                     33,
-                    "<p><b>Text Maori Language</b></p>",
+                    "<html>\n" +
+                            "<body>\n" +
+                            "<p><span>Pua te kōwhai\n" +
+                            "Ngawhā te kōrari\n" +
+                            "He tohu kōanga\n" +
+                            "Tau mai e Tui ki tō kāpunipuni\n" +
+                            "Honihoni, kohikohi\n" +
+                            "Hei oranga, hei rongoā\n" +
+                            "Pania te kiri ki te kōwhai kura\n" +
+                            "E Tui haurangi i te tākoha o te Atua\n" +
+                            "Rere atu, hoki mai\n" +
+                            "Parea te ua kōwhai\n" +
+                            "Ka whiti mai te rā e</span></p>\n" +
+                            "</body>\n" +
+                            "</html>",
                     "<p><b>Text English Language</b></p>",
                     7));
 

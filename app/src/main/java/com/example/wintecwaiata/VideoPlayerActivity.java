@@ -27,14 +27,13 @@ public class VideoPlayerActivity extends AppCompatActivity {
     private VideoListViewModel videoListViewModel;
 
     private TabLayout mainTab;
+    private TabLayout lyricsTab;
     private TabItem tabKaraoke,tabLyrics,tabAudio;
     private ViewPager viewPager;
+    private ViewPager pagerView;
     private int videoCode;
     private String videoName;
     private ActionBar actionBar;
-    ArrayList<String> videoLocation = new ArrayList<String>(3);
-    ReadAllRawData readAllRawData = new ReadAllRawData();
-//    SelectedBundle selectedBundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +42,12 @@ public class VideoPlayerActivity extends AppCompatActivity {
 
         //initializing the tab items and viewpager
         mainTab = findViewById(R.id.tabLayout);
+        lyricsTab = findViewById(R.id.tabLyricsView);
         tabKaraoke = findViewById(R.id.tabKaraoke);
         tabLyrics = findViewById(R.id.tabLyrics);
         tabAudio = findViewById(R.id.tabAudio);
         viewPager = findViewById(R.id.viewPager);
+        pagerView = findViewById(R.id.pagerView);
         actionBar = getSupportActionBar();
 
         //adding the pager adapter
@@ -64,7 +65,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<VideoDetailsView> videoDetailsViews) {
                 videoDetailsViews.get(0).getTextMaori();
-                videoDetailsViews.get(0).getTextMaori();
+                videoDetailsViews.get(0).getTextEnglish();
             }
         });
 
@@ -90,6 +91,28 @@ public class VideoPlayerActivity extends AppCompatActivity {
         });
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mainTab));
+
+        LyricsPagerAdapter lyricsPagerAdapter = new LyricsPagerAdapter(getSupportFragmentManager(),lyricsTab.getTabCount());
+        pagerView.setAdapter(lyricsPagerAdapter);
+
+        lyricsTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                pagerView.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        pagerView.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(lyricsTab));
     }
 
 }

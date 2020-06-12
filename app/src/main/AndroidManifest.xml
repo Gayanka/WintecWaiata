@@ -13,6 +13,8 @@
             android:theme="@style/AppTheme"></activity>
         <!--activity android:name=".CarvingListActivity" /-->
         <activity android:name=".VideoPlayerActivity"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity"/>
             android:theme="@style/AppTheme"/>
         <activity android:name=".MaraeInfo"></activity>
         <activity android:name=".StartActivity" />
