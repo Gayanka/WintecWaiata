@@ -658,7 +658,9 @@ public abstract class AppDatabase extends RoomDatabase {
                     30,
                     "<html>\n" +
                             "<body>\n" +
-                            "<p><span>I te whare whakapiri a Tāne\n" +
+                            "<p><span>He Māori tū tangata" +
+                            "<br><br>" +
+                            "I te whare whakapiri a Tāne\n" +
                             "<br>" +
                             "Roto te Kuratini o Waikato\n" +
                             "<br>" +

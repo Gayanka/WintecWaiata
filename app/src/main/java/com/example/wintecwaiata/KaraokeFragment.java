@@ -75,7 +75,7 @@ public class KaraokeFragment extends Fragment {
                     String videoPath = "android.resource://" + getActivity().getPackageName() + "/" + field.getInt(null);
                     Uri uri = Uri.parse(videoPath);
                     mVideoView.setVideoURI(uri);
-                    mVideoView.start();
+                    //mVideoView.start();
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
