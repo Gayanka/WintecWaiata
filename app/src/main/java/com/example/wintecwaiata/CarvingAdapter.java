@@ -66,7 +66,8 @@ public class CarvingAdapter extends RecyclerView.Adapter<CarvingAdapter.CarvingH
     public void onBindViewHolder(@NonNull CarvingHolder holder, int position) {
         CarvingListView currentCarving = carvingListView.get(position);
         holder.textViewTitle.setText(currentCarving.getTitle());
-        holder.textViewPicturesNum.setText(String.valueOf(currentCarving.getPicture_num()) + " pictures");
+        int pictureNum = currentCarving.getPicture_num();
+        holder.textViewPicturesNum.setText(String.valueOf(pictureNum) + ((pictureNum == 1) ? " picture" : " pictures"));
         holder.carvingId = currentCarving.getId();
         try {
             String filename = currentCarving.getFilename();
