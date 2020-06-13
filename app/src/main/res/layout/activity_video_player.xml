@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="#747878">
+            android:background="#1e1a19">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabKaraoke"
@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout"
-        android:background="#3F4040">
+        android:background="#1e1a19">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabMaori"

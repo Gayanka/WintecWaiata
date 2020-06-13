@@ -1,6 +1,7 @@
 package com.example.wintecwaiata;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -128,6 +129,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
             pagerView.setVisibility(View.GONE);
             params.height = height_fs;
             viewPager.setLayoutParams(params);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             mainTab.setVisibility(View.VISIBLE);
@@ -136,6 +138,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
             params.height = height_original;
             viewPager.setLayoutParams(params);
             getSupportActionBar().show();
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
     }
