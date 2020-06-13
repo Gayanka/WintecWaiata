@@ -3,9 +3,13 @@ package com.example.wintecwaiata;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.graphics.Point;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +22,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.universalvideoview.UniversalMediaController;
+import com.universalvideoview.UniversalVideoView;
+
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -28,11 +35,11 @@ import static com.example.wintecwaiata.MainPageFragment.VIDEO_ID_NAME;
  * A simple {@link Fragment} subclass.
  */
 public class KaraokeFragment extends Fragment {
-    private VideoView videoView;
-    private MediaController mediaController;
     private VideoListViewModel videoListViewModel;
     private int videoCode;
     private String video;
+    private UniversalVideoView mVideoView;
+    private UniversalMediaController mMediaController;
 
 
     public KaraokeFragment() {
@@ -45,7 +52,10 @@ public class KaraokeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View v =inflater.inflate(R.layout.fragment_karaoke, container, false);
-        videoView = v.findViewById(R.id.videoKaraoke);
+//        videoView = v.findViewById(R.id.videoKaraoke);
+        mVideoView = v.findViewById(R.id.videoKaraoke);
+        mMediaController = v.findViewById(R.id.media_controller);
+        mVideoView.setMediaController(mMediaController);
 
         //get the mother activity and load the video location
         Intent intent = getActivity().getIntent();
@@ -64,16 +74,50 @@ public class KaraokeFragment extends Fragment {
                     Field field = R.raw.class.getField(video);
                     String videoPath = "android.resource://" + getActivity().getPackageName() + "/" + field.getInt(null);
                     Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                    mediaController = new MediaController(v.getContext());
-                    videoView.setMediaController(mediaController);
-                    mediaController.setAnchorView(videoView);
-                    videoView.start();
+                    mVideoView.setVideoURI(uri);
+                    mVideoView.start();
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
             }
         });
+
+        mVideoView.setVideoViewCallback(new UniversalVideoView.VideoViewCallback() {
+            @Override
+            public void onScaleChange(boolean isFullscreen) {
+                int flg = getActivity().getWindow().getAttributes().flags;
+                if ((flg & WindowManager.LayoutParams.FLAG_FULLSCREEN) == WindowManager.LayoutParams.FLAG_FULLSCREEN){
+                    isFullscreen = true;
+                }
+                if (isFullscreen) {
+                    //write your code if need to do something in Full Screen
+
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onPause(MediaPlayer mediaPlayer) {
+
+            }
+
+            @Override
+            public void onStart(MediaPlayer mediaPlayer) {
+
+            }
+
+            @Override
+            public void onBufferingStart(MediaPlayer mediaPlayer) {
+
+            }
+
+            @Override
+            public void onBufferingEnd(MediaPlayer mediaPlayer) {
+
+            }
+        });
+
 
         return v;
     }
@@ -84,12 +128,12 @@ public class KaraokeFragment extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (this.isVisible()){
             if (!isVisibleToUser){
-                videoView.pause();
-                mediaController.hide();
+                mVideoView.pause();
+                mMediaController.hide();
             }
 
             if (isVisibleToUser){
-                mediaController.show();
+                mMediaController.show();
             }
         }
     }
@@ -97,19 +141,19 @@ public class KaraokeFragment extends Fragment {
 
     @Override
     public void onResume() {
-        videoView.resume();
+        mVideoView.resume();
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        videoView.suspend();
+        mVideoView.suspend();
         super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        videoView.stopPlayback();
+        mVideoView.stopPlayback();
         super.onDestroy();
     }
 

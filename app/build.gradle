@@ -69,4 +69,7 @@ dependencies {
 
     // Annotation processor
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    //Universal Video View
+    implementation "com.linsea:universalvideoview:1.1.0@aar"
 }

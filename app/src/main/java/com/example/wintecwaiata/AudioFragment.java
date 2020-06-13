@@ -16,6 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.universalvideoview.UniversalMediaController;
+import com.universalvideoview.UniversalVideoView;
+
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -26,8 +29,8 @@ import static com.example.wintecwaiata.MainPageFragment.VIDEO_ID_NAME;
  * A simple {@link Fragment} subclass.
  */
 public class AudioFragment extends Fragment {
-    private VideoView videoView;
-    private MediaController mediaController;
+    private UniversalVideoView mVideoView;
+    private UniversalMediaController mMediaController;
     private int videoCode;
     private VideoListViewModel videoListViewModel;
     private String video;
@@ -42,7 +45,10 @@ public class AudioFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View v =  inflater.inflate(R.layout.fragment_audio, container, false);
-        videoView = v.findViewById(R.id.videoAudio);
+        mVideoView = v.findViewById(R.id.videoAudio);
+        mMediaController = v.findViewById(R.id.media_controller);
+        mVideoView.setMediaController(mMediaController);
+
         Intent intent = getActivity().getIntent();
         videoCode = intent.getIntExtra(VIDEO_ID_NAME, 0);
         videoListViewModel = new ViewModelProvider(this, new VideoListViewModelFactory(getActivity().getApplication())).get(VideoListViewModel.class);
@@ -57,10 +63,7 @@ public class AudioFragment extends Fragment {
                     Field field = R.raw.class.getField(video);
                     String videoPath = "android.resource://" + getActivity().getPackageName() + "/" + field.getInt(null);
                     Uri uri = Uri.parse(videoPath);
-                    videoView.setVideoURI(uri);
-                    mediaController = new MediaController(v.getContext());
-                    videoView.setMediaController(mediaController);
-                    mediaController.setAnchorView(videoView);
+                    mVideoView.setVideoURI(uri);
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
@@ -75,13 +78,12 @@ public class AudioFragment extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (this.isVisible()){
             if (!isVisibleToUser){
-//                videoView.stopPlayback();
-                videoView.pause();
-                mediaController.hide();
+                mVideoView.pause();
+                mMediaController.hide();
             }
 
             if (isVisibleToUser){
-                mediaController.show();
+                mMediaController.show();
             }
         }
     }
@@ -89,19 +91,19 @@ public class AudioFragment extends Fragment {
 
     @Override
     public void onResume() {
-        videoView.resume();
+        mVideoView.resume();
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        videoView.suspend();
+        mVideoView.suspend();
         super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        videoView.stopPlayback();
+        mVideoView.stopPlayback();
         super.onDestroy();
     }
 
