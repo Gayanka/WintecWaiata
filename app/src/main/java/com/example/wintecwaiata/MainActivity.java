@@ -1,8 +1,8 @@
 package com.example.wintecwaiata;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -15,6 +15,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    private long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_relationshipwithtainui:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new TainuiFragment()).commit();
+                getSupportActionBar().setTitle("Relationshop with Tainiu");
                 break;
             case R.id.nav_wintecmarae:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -79,7 +81,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                finishAffinity();
+            } else {
+                Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+            }
+            backPressedTime = System.currentTimeMillis();
         }
     }
 

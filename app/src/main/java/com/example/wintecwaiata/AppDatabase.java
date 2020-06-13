@@ -760,6 +760,7 @@ public abstract class AppDatabase extends RoomDatabase {
             externalHTTPDao.insert(new ExternalHTTP("CarvingDescriptionActivity", 5, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/wintec-marae/marae-carvings/#tomokanga"));
             externalHTTPDao.insert(new ExternalHTTP("CarvingDescriptionActivity", 6, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/wintec-marae/marae-carvings/#pare-and-whakawae"));
             externalHTTPDao.insert(new ExternalHTTP("CarvingDescriptionActivity", 7, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/wintec-marae/marae-carvings/#kōrupe"));
+            externalHTTPDao.insert(new ExternalHTTP("TainuiFragment", 0, "https://www.wintec.ac.nz/about-wintec/m%C4%81ori-and-pasifika/community-links"));
 
 
             return null;
