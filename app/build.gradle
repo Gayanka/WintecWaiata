@@ -28,6 +28,7 @@ dependencies {
     def lifecycle_version = "2.2.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    
 
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -68,4 +69,7 @@ dependencies {
 
     // Annotation processor
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    //Universal Video View
+    implementation "com.linsea:universalvideoview:1.1.0@aar"
 }

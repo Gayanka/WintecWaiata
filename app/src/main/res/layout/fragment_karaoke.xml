@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".KaraokeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,10 +12,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!--
         <VideoView
             android:id="@+id/videoKaraoke"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />-->
+        <com.universalvideoview.UniversalVideoView
+            android:id="@+id/videoKaraoke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:uvv_autoRotation="true"
+            app:uvv_fitXY="false" />
+
+        <com.universalvideoview.UniversalMediaController
+            android:id="@+id/media_controller"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            app:uvv_scalable="true" />
     </FrameLayout>
 
 </RelativeLayout>

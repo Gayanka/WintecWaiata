@@ -26,6 +26,7 @@
             android:drawableLeft="@drawable/ic_email"
             android:textSize="20dp"
             android:text="Mail: hami.temomo@wintec.ac.nz"
+            android:fontFamily="sans-serif"
             android:gravity="center"
             />
     </LinearLayout>
@@ -36,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Far far away, behind word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics."
+            android:fontFamily="sans-serif"
             android:textSize="20dp"
             android:gravity="center"
             />

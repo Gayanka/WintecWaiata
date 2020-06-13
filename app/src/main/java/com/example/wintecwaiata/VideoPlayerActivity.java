@@ -1,23 +1,23 @@
 package com.example.wintecwaiata;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
-import android.widget.Toast;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
 
-
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.example.wintecwaiata.MainPageFragment.*;
 
@@ -34,6 +34,9 @@ public class VideoPlayerActivity extends AppCompatActivity {
     private int videoCode;
     private String videoName;
     private ActionBar actionBar;
+    private int height_original;
+    private ViewGroup.LayoutParams params;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,15 +62,11 @@ public class VideoPlayerActivity extends AppCompatActivity {
         videoCode = intent.getIntExtra(VIDEO_ID_NAME, 0);
         videoName = intent.getStringExtra(VIDEO_TITLE_NAME);
         actionBar.setTitle(videoName);
+        params = viewPager.getLayoutParams();
+        height_original = params.height;
 
-        videoListViewModel = new ViewModelProvider(this, new VideoListViewModelFactory(this.getApplication())).get(VideoListViewModel.class);
-        videoListViewModel.getVideoDetails(videoCode).observe(this, new Observer<List<VideoDetailsView>>() {
-            @Override
-            public void onChanged(List<VideoDetailsView> videoDetailsViews) {
-                videoDetailsViews.get(0).getTextMaori();
-                videoDetailsViews.get(0).getTextEnglish();
-            }
-        });
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
+                WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), mainTab.getTabCount());
@@ -115,4 +114,32 @@ public class VideoPlayerActivity extends AppCompatActivity {
         pagerView.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(lyricsTab));
     }
 
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height_fs = displayMetrics.heightPixels;
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            getSupportActionBar().hide();
+            mainTab.setVisibility(View.GONE);
+            lyricsTab.setVisibility(View.GONE);
+            pagerView.setVisibility(View.GONE);
+            params.height = height_fs;
+            viewPager.setLayoutParams(params);
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            mainTab.setVisibility(View.VISIBLE);
+            lyricsTab.setVisibility(View.VISIBLE);
+            pagerView.setVisibility(View.VISIBLE);
+            params.height = height_original;
+            viewPager.setLayoutParams(params);
+            getSupportActionBar().show();
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+    }
 }

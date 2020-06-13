@@ -7,42 +7,51 @@
     android:layout_height="match_parent"
     tools:context=".VideoPlayerActivity">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="#747878">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabKaraoke"
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Karaoke" />
+            android:orientation="vertical">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabLyrics"
-            android:layout_width="wrap_content"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lyrics" />
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="#1e1a19">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabAudio"
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabKaraoke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Karaoke" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabLyrics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lyrics" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabAudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Audio" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Audio" />
-    </com.google.android.material.tabs.TabLayout>
+            android:layout_height="220dp"
+            android:layout_gravity="center"
+            android:layout_below="@+id/tabLayout"
+            android:background="#000000" />
+    </LinearLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="wrap_content"
-        android:layout_height="230dp"
-        android:layout_below="@+id/tabLayout"
-        android:background="#000000"/>
 
     <!--<FrameLayout
         android:layout_width="match_parent"
@@ -53,8 +62,8 @@
         android:id="@+id/tabLyricsView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/viewPager"
-        android:background="#3F4040">
+        android:layout_below="@+id/linearLayout"
+        android:background="#1e1a19">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabMaori"
