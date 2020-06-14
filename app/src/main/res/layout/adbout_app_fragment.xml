@@ -19,7 +19,7 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="40dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -31,15 +31,87 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="80dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Far far away, behind word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics."
+            android:text="The Wintec Waiata App is a mobile app that helps people learn Wintec songs and Wintec Marae."
+            android:textStyle="bold"
             android:textSize="20dp"
-            android:gravity="center"
-            />
 
+            />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Team"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Denis Klopov"
+            android:textSize="20dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Andrew Choi"
+            android:textSize="20dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Gayanka Dharmarathne"
+            android:textSize="20dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Wei Cai"
+            android:textSize="20dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Srushtiden Sahilkumar Patel"
+            android:textSize="20dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Kamiyar Sanau"
+            android:textSize="20dp"
+            />
+    </LinearLayout>
+
 
 </LinearLayout>
