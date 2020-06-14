@@ -5,4 +5,5 @@
     <color name="colorPrimaryDark">#EFCE00</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="actionBarTextColor">#000</color>
+    <color name="tabTextColor">#fff</color>
 </resources>

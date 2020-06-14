@@ -68,7 +68,7 @@ public class StartActivity extends AppCompatActivity {
     private void showStartDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Disclaimer")
-                .setMessage("When she reached the first hills on the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarks-grove, the headline.")
+                .setMessage("The Waiata App is a Prototype version for Wintec Staff and Students. It is intended that staff and students shall use this to get an understanding of singing Wintec Waiata and information related to the Wintec Marae. Waiata or Information on the Marae may change change accordingly making older versions redundant – Wintec takes no responsibility of outdated information displayed on the app.")
                 .setPositiveButton("AGREE", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

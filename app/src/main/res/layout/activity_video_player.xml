@@ -33,7 +33,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="#1e1a19">
+            android:background="#1e1a19"
+            app:tabTextColor="@color/tabTextColor">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/tabKaraoke"
@@ -74,7 +75,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout"
-        android:background="#1e1a19">
+        android:background="#1e1a19"
+        app:tabTextColor="@color/tabTextColor">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabMaori"
