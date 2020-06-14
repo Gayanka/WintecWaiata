@@ -54,7 +54,7 @@ public class TainuiFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
-        inflater.inflate(R.menu.tainui_toolbar_menu, menu);
+        inflater.inflate(R.menu.open_in_browser, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -62,7 +62,7 @@ public class TainuiFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.open_link:
+            case R.id.action_open_in_browser:
                 externalLinkViewModel.getExternalLink(this.getClass().getSimpleName()).observe(this, new Observer<String>() {
                     @Override
                     public void onChanged(String s) {

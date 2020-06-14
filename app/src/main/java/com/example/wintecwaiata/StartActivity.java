@@ -87,6 +87,7 @@ public class StartActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                        finishAffinity();
                     }
                 })
                 .create()

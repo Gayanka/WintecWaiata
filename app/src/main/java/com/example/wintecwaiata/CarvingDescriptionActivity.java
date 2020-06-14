@@ -24,6 +24,7 @@ import static com.example.wintecwaiata.CarvingListFragment.*;
 
 public class CarvingDescriptionActivity extends AppCompatActivity {
     private CarvingListViewModel carvingListViewModel;
+    private ExternalLinkViewModel externalLinkViewModel;
     private int id;
     private String title;
     @Override
@@ -54,6 +55,7 @@ public class CarvingDescriptionActivity extends AppCompatActivity {
         recyclerView.setAdapter(carvingDescriptionAdapter);
 
         carvingListViewModel = new ViewModelProvider(this, new CarvingListViewModelFactory(this.getApplication())).get(CarvingListViewModel.class);
+        externalLinkViewModel = new ViewModelProvider(this, new ExternalLinkFactory(this.getApplication())).get(ExternalLinkViewModel.class);
         carvingListViewModel.getCarvingDescriptionView(id).observe(this, new Observer<List<CarvingDescriptionView>>() {
             @Override
             public void onChanged(List<CarvingDescriptionView> carvingDescriptionViews) {
@@ -73,7 +75,7 @@ public class CarvingDescriptionActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_open_in_browser:
-                carvingListViewModel.getExternalLink(this.getClass().getSimpleName(), id).observe(this, new Observer<String>() {
+                externalLinkViewModel.getExternalLink(this.getClass().getSimpleName(), id).observe(this, new Observer<String>() {
                     @Override
                     public void onChanged(String s) {
                         Uri uri = Uri.parse(s);

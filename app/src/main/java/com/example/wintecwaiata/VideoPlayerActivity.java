@@ -64,7 +64,6 @@ public class VideoPlayerActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         pagerView = findViewById(R.id.pagerView);
         actionBar = getSupportActionBar();
-
         //adding the pager adapter
 //        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(),
 //                FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,

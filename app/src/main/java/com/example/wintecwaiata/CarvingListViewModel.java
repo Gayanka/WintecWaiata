@@ -62,11 +62,4 @@ public class CarvingListViewModel extends AndroidViewModel {
         return appRepository.getCarvingDescriptionView(carvingId);
     }
 
-    public LiveData<String> getExternalLink(String activityName) {
-        return appRepository.getExternalLink(activityName);
-    }
-
-    public LiveData<String> getExternalLink(String activityName, int carvingId) {
-        return appRepository.getExternalLink(activityName, carvingId);
-    }
 }
