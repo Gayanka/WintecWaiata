@@ -15,9 +15,7 @@
         <activity android:name=".VideoPlayerActivity"
             android:configChanges="orientation|screenSize"
             android:parentActivityName=".MainActivity"/>
-        <activity android:name=".MaraeInfo"></activity>
         <activity android:name=".MainActivity"></activity>
-        <!--<activity android:name=".VideoPlaylistActivity" />-->
         <activity
             android:name=".StartActivity"
             android:theme="@style/AppTheme.NoActionBar">

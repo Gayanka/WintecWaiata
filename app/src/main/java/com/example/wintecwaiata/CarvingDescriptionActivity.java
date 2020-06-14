@@ -73,20 +73,18 @@ public class CarvingDescriptionActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_open_in_browser:
-                externalLinkViewModel.getExternalLink(this.getClass().getSimpleName(), id).observe(this, new Observer<String>() {
-                    @Override
-                    public void onChanged(String s) {
-                        Uri uri = Uri.parse(s);
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
-                    }
-                });
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.action_open_in_browser) {
+            externalLinkViewModel.getExternalLink(this.getClass().getSimpleName(), id).observe(this, new Observer<String>() {
+                @Override
+                public void onChanged(String s) {
+                    Uri uri = Uri.parse(s);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                }
+            });
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
