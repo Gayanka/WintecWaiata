@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.NoActionBar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VideoPlayerActivity">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:background="#747878"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabKaraoke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Karaoke" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabLyrics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lyrics" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabAudio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Audio" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabLayout"
+        android:background="#000000"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+    <!--<FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewPager">-->
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLyricsView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewPager"
+        android:background="#3F4040"
+        android:visibility="gone"
+        tools:visibility="gone">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabMaori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Māori" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabEnglish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pagerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabLyricsView"
+        android:visibility="gone"
+        tools:visibility="gone" />
+
+    <!-- </FrameLayout>-->
+
+</RelativeLayout>

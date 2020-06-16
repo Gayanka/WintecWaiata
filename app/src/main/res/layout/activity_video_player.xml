@@ -2,79 +2,101 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VideoPlayerActivity">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="#747878">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/AppTheme"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="@color/actionBarTextColor" />
 
-        <android.support.design.widget.TabItem
-            android:id="@+id/tabKaraoke"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Karaoke" />
-
-        <android.support.design.widget.TabItem
-            android:id="@+id/tabLyrics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lyrics" />
-
-        <android.support.design.widget.TabItem
-            android:id="@+id/tabAudio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Audio" />
-    </android.support.design.widget.TabLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="wrap_content"
-        android:layout_height="230dp"
-        android:layout_below="@+id/tabLayout"
-        android:background="#000000"/>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/viewPager">
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLyricsView"
+    <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="#3F4040">
+            android:layout_below="@id/toolbar"
+            android:orientation="vertical">
 
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabMaori"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="#1e1a19"
+            app:tabTextColor="@color/tabTextColor">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabKaraoke"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Māori" />
+                android:text="Karaoke" />
 
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabEnglish"
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabLyrics"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="English" />
+                android:text="Lyrics" />
 
-        </android.support.design.widget.TabLayout>
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pagerView"
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabAudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Audio" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="wrap_content"
+            android:layout_height="220dp"
+            android:layout_gravity="center"
+            android:layout_below="@+id/tabLayout"
+            android:background="#000000" />
+    </LinearLayout>
+
+
+    <!--<FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewPager">-->
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLyricsView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:background="#1e1a19"
+        app:tabTextColor="@color/tabTextColor">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabMaori"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tabLyricsView"/>
-    </FrameLayout>
+            android:text="Māori" />
 
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabEnglish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English" />
+
+    </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pagerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabLyricsView"/>
+
+    <!-- </FrameLayout>-->
 
 </RelativeLayout>

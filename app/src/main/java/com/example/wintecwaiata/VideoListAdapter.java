@@ -1,18 +1,21 @@
 package com.example.wintecwaiata;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
 public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.VideoHolder> {
-    private ArrayList<VideoItem> videoList;
+    private List<VideoListView> videoListViews = new ArrayList<>();
     private OnItemClickListener itemClickListener;
 
     public interface OnItemClickListener{
@@ -23,21 +26,19 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
         itemClickListener = listener;
     }
 
-    public VideoListAdapter(ArrayList<VideoItem> videoList) {
-        this.videoList = videoList;
-    }
-
     public class VideoHolder extends RecyclerView.ViewHolder{
         CardView mCardView;
         ImageView imageThumbnail;
-        TextView textViewFileName;
+        TextView textViewTitle;
+        private int videoId;
 
         public VideoHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
 
             mCardView = itemView.findViewById(R.id.cardView_cardview);
             imageThumbnail = itemView.findViewById(R.id.cardView1_thumbnail);
-            textViewFileName = itemView.findViewById(R.id.cardView1_title);
+            textViewTitle = itemView.findViewById(R.id.cardView1_title);
+            videoId = 0;
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -64,13 +65,31 @@ public class VideoListAdapter extends RecyclerView.Adapter<VideoListAdapter.Vide
 
     @Override
     public void onBindViewHolder(@NonNull VideoHolder videoHolder, int i) {
-        videoHolder.imageThumbnail.setImageBitmap(videoList.get(i).imageItemThumbnail);
-        videoHolder.textViewFileName.setText(videoList.get(i).videoTitle);
+        //videoHolder.imageThumbnail.setImageBitmap(videoList.get(i).imageItemThumbnail);
+        VideoListView currentVideo = videoListViews.get(i);
+        videoHolder.textViewTitle.setText(currentVideo.getTitle());
+        try {
+            String filename = videoListViews.get(i).getFilename();
+            if (filename.contains(".")) {
+                filename = filename.substring(0, filename.indexOf("."));
+            }
+            Field field = R.drawable.class.getField(filename);
+            videoHolder.imageThumbnail.setImageResource(field.getInt(null));
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        videoHolder.videoId = currentVideo.getId();
     }
 
     @Override
     public int getItemCount() {
-        return videoList.size();
+        return videoListViews.size();
+    }
+
+    public void setVideoList(List<VideoListView> videoListView) {
+        this.videoListViews = videoListView;
+        notifyDataSetChanged();
     }
 
 }

@@ -9,6 +9,4 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:orientation="vertical">
 
-
-
 </LinearLayout>
